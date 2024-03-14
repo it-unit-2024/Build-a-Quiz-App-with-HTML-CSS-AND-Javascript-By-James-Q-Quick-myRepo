@@ -4,6 +4,8 @@ const choices = Array.from(document.getElementsByClassName("choice-text"));
 const progressText = document.getElementById("progressText");
 const scoreText = document.getElementById("score");
 const progressBarFull = document.getElementById("progressBarFull");
+const loader = document.getElementById("loader");
+const game = document.getElementById("game");
 
 // console.log(choices);
 
@@ -43,6 +45,9 @@ fetch(
       return formattedQuestion;
     });
     // questions = loadedQuestions;
+
+    // game.classList.remove("hidden");
+    // loader.classList.add("hidden");
     startGame();
   })
   .catch((err) => {
@@ -86,6 +91,8 @@ startGame = () => {
   availableQuesions = [...questions];
   // console.log(availableQuesions);
   getNewQuestion();
+  game.classList.remove("hidden");
+  loader.classList.add("hidden");
 };
 
 getNewQuestion = () => {
